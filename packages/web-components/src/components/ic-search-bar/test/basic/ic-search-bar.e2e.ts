@@ -1066,9 +1066,12 @@ describe("ic-search-bar", () => {
     await page.waitForChanges();
 
     await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
+    await page.waitForChanges();
 
+    await page.keyboard.press("Tab");
+    await page.waitForChanges();
+
+    await page.keyboard.press("Tab");
     await page.waitForChanges();
 
     let focusedElement = await page.evaluate(() => {
