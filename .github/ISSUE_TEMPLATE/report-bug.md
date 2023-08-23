@@ -4,6 +4,7 @@ about: Tell us about a problem with the UI Kit or Design System website.
 title: ''
 labels: ''
 assignees: ''
+type: 'Bug'
 
 ---
 
