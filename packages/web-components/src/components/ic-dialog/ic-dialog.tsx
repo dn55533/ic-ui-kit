@@ -27,7 +27,7 @@ import { isSlotUsed, checkResizeObserver } from "../../utils/helpers";
 export class Dialog {
   private DATA_OVERFLOW: string = "data-overflow";
   private DATA_GETS_FOCUS: string = "data-gets-focus";
-  private DATA_GETS_FOCUS_SELECTOR: string = "[data-gets-focus]";
+  // private DATA_GETS_FOCUS_SELECTOR: string = "[data-gets-focus]";
   private DIALOG_CONTROLS: string = "dialog-controls";
   private dialogEl: HTMLDialogElement;
   private dialogHeight: number = 0;
@@ -187,12 +187,12 @@ export class Dialog {
   @Method()
   async showDialog(): Promise<void> {
     this.dialogRendered = true;
-    this.dialogEl.showModal();
+    this.dialogEl.show();
     setTimeout(() => {
       this.fadeIn = true;
     }, 10);
     setTimeout(() => {
-      this.setInitialFocus();
+      // this.setInitialFocus();
       checkResizeObserver(this.runResizeObserver);
     }, 75);
     setTimeout(() => {
@@ -261,26 +261,26 @@ export class Dialog {
     }
   };
 
-  private setInitialFocus = () => {
-    this.sourceElement = document.activeElement as HTMLElement;
+  // private setInitialFocus = () => {
+  //   this.sourceElement = document.activeElement as HTMLElement;
 
-    let focusedElement;
+  //   let focusedElement;
 
-    if (this.el.querySelector(this.DATA_GETS_FOCUS_SELECTOR) !== null) {
-      focusedElement = this.el.querySelector(
-        this.DATA_GETS_FOCUS_SELECTOR
-      ) as HTMLElement;
-    } else {
-      focusedElement = this.el.shadowRoot.querySelector(
-        this.DATA_GETS_FOCUS_SELECTOR
-      ) as HTMLElement;
-    }
-    if (focusedElement.tagName === this.IC_TEXT_FIELD) {
-      (focusedElement as HTMLIcTextFieldElement).setFocus();
-    } else {
-      focusedElement.focus();
-    }
-  };
+  //   if (this.el.querySelector(this.DATA_GETS_FOCUS_SELECTOR) !== null) {
+  //     focusedElement = this.el.querySelector(
+  //       this.DATA_GETS_FOCUS_SELECTOR
+  //     ) as HTMLElement;
+  //   } else {
+  //     focusedElement = this.el.shadowRoot.querySelector(
+  //       this.DATA_GETS_FOCUS_SELECTOR
+  //     ) as HTMLElement;
+  //   }
+  //   if (focusedElement.tagName === this.IC_TEXT_FIELD) {
+  //     (focusedElement as HTMLIcTextFieldElement).setFocus();
+  //   } else {
+  //     focusedElement.focus();
+  //   }
+  // };
 
   private getFocusedElementIndex = () => {
     for (let i = 0; i < this.interactiveElementList.length; i++) {
@@ -412,88 +412,90 @@ export class Dialog {
       <Host
         class={{ ["hidden"]: !this.dialogRendered, ["fade-in"]: this.fadeIn }}
       >
-        <dialog
-          class={{ ["dialog"]: true, [`${size}`]: true }}
-          aria-labelledby="dialog-label dialog-heading"
-          aria-describedby="dialog-alert dialog-content"
-          ref={(el) => (this.dialogEl = el)}
-        >
-          <div class="heading-area">
-            <div class="heading-content">
-              <div class="label">
-                <slot name="label">
-                  <ic-typography variant="label" id="dialog-label">
-                    {label}
-                  </ic-typography>
-                </slot>
+        <div class="backdrop">
+          <dialog
+            class={{ ["dialog"]: true, [`${size}`]: true }}
+            aria-labelledby="dialog-label dialog-heading"
+            aria-describedby="dialog-alert dialog-content"
+            ref={(el) => (this.dialogEl = el)}
+          >
+            <div class="heading-area">
+              <div class="heading-content">
+                <div class="label">
+                  <slot name="label">
+                    <ic-typography variant="label" id="dialog-label">
+                      {label}
+                    </ic-typography>
+                  </slot>
+                </div>
+                <div class="heading">
+                  <slot name="heading">
+                    <ic-typography variant="h4" id="dialog-heading">
+                      {heading}
+                    </ic-typography>
+                  </slot>
+                </div>
               </div>
-              <div class="heading">
-                <slot name="heading">
-                  <ic-typography variant="h4" id="dialog-heading">
-                    {heading}
-                  </ic-typography>
-                </slot>
+              <ic-button
+                class="close-icon"
+                variant="icon"
+                aria-label={dismissLabel}
+                onClick={this.closeIconClick}
+                data-gets-focus={destructive || !buttons ? "" : null}
+              >
+                <span class="close-icon-svg" innerHTML={closeIcon} />
+              </ic-button>
+            </div>
+            <div class="content-area">
+              {status && (
+                <ic-alert
+                  variant={status}
+                  heading={alertHeading}
+                  message={alertMessage}
+                  title-above
+                  class="status-alert"
+                  id="dialog-alert"
+                ></ic-alert>
+              )}
+              <div id="dialog-content">
+                <slot></slot>
               </div>
             </div>
-            <ic-button
-              class="close-icon"
-              variant="icon"
-              aria-label={dismissLabel}
-              onClick={this.closeIconClick}
-              data-gets-focus={destructive || !buttons ? "" : null}
-            >
-              <span class="close-icon-svg" innerHTML={closeIcon} />
-            </ic-button>
-          </div>
-          <div class="content-area">
-            {status && (
-              <ic-alert
-                variant={status}
-                heading={alertHeading}
-                message={alertMessage}
-                title-above
-                class="status-alert"
-                id="dialog-alert"
-              ></ic-alert>
+            {(buttons || isSlotUsed(this.el, this.DIALOG_CONTROLS)) && (
+              <div
+                class={{
+                  [this.DIALOG_CONTROLS]: true,
+                  ["triple-button"]: buttonProps.length === 3,
+                }}
+              >
+                <slot name={this.DIALOG_CONTROLS}>
+                  {!isSlotUsed(this.el, this.DIALOG_CONTROLS) &&
+                    buttonProps.map((props, index) => {
+                      if (index > 2) {
+                        return;
+                      } else {
+                        return (
+                          <ic-button
+                            variant={this.getButtonVariant(index)}
+                            onClick={() => this.getButtonOnclick(index)}
+                            class="dialog-control-button"
+                            full-width={buttonProps.length === 3}
+                            data-gets-focus={
+                              this.getButtonVariant(index) === "primary"
+                                ? ""
+                                : null
+                            }
+                          >
+                            {props.label}
+                          </ic-button>
+                        );
+                      }
+                    })}
+                </slot>
+              </div>
             )}
-            <div id="dialog-content">
-              <slot></slot>
-            </div>
-          </div>
-          {(buttons || isSlotUsed(this.el, this.DIALOG_CONTROLS)) && (
-            <div
-              class={{
-                [this.DIALOG_CONTROLS]: true,
-                ["triple-button"]: buttonProps.length === 3,
-              }}
-            >
-              <slot name={this.DIALOG_CONTROLS}>
-                {!isSlotUsed(this.el, this.DIALOG_CONTROLS) &&
-                  buttonProps.map((props, index) => {
-                    if (index > 2) {
-                      return;
-                    } else {
-                      return (
-                        <ic-button
-                          variant={this.getButtonVariant(index)}
-                          onClick={() => this.getButtonOnclick(index)}
-                          class="dialog-control-button"
-                          full-width={buttonProps.length === 3}
-                          data-gets-focus={
-                            this.getButtonVariant(index) === "primary"
-                              ? ""
-                              : null
-                          }
-                        >
-                          {props.label}
-                        </ic-button>
-                      );
-                    }
-                  })}
-              </slot>
-            </div>
-          )}
-        </dialog>
+          </dialog>
+        </div>
       </Host>
     );
   }

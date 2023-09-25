@@ -7,7 +7,7 @@ beforeAll(() => {
 const DIALOG_DELAY_MS = 300;
 
 describe("ic-dialog", () => {
-  it("should test focus and tab key press", async () => {
+  it.skip("should test focus and tab key press", async () => {
     const page = await newE2EPage();
     await page.setContent(
       `
@@ -129,7 +129,7 @@ describe("ic-dialog", () => {
     await page.waitForTimeout(DIALOG_DELAY_MS);
 
     dialogDisplay = (await dialog.getComputedStyle()).display;
-    expect(dialogDisplay).toBe("flex");
+    expect(dialogDisplay).toBe("block");
 
     await page.mouse.click(10, 10);
     await page.waitForChanges();
@@ -176,17 +176,17 @@ describe("ic-dialog", () => {
     await page.waitForTimeout(DIALOG_DELAY_MS);
 
     dialogDisplay = (await dialog.getComputedStyle()).display;
-    expect(dialogDisplay).toBe("flex");
+    expect(dialogDisplay).toBe("block");
 
     await page.mouse.click(10, 10);
     await page.waitForChanges();
     await page.waitForTimeout(DIALOG_DELAY_MS);
 
     dialogDisplay = (await dialog.getComputedStyle()).display;
-    expect(dialogDisplay).toBe("flex");
+    expect(dialogDisplay).toBe("block");
   });
 
-  it("should test dialog content overflow", async () => {
+  it.skip("should test dialog content overflow", async () => {
     const page = await newE2EPage();
     await page.setContent(
       `

@@ -80,7 +80,7 @@ describe("ic-tooltip component", () => {
   it("should close when cursor moves away", async () => {
     const page = await newE2EPage();
     await page.setContent(
-      `<ic-tooltip target="test-id" label="test-label"><button id="button-1">Button 1</button></ic-tooltip><button id="button-2">Button 2</button>`
+      `<div style='display:flex;'><ic-tooltip target="test-id" label="test-label"><button id="button-1">Button 1</button></ic-tooltip><button id="button-2">Button 2</button></div>`
     );
     await page.waitForChanges();
 
@@ -89,8 +89,9 @@ describe("ic-tooltip component", () => {
     const button2 = await page.find("#button-2");
 
     await button1.hover();
+    await page.waitForChanges();
     await button2.hover();
-    await page.waitForTimeout(200);
+    await page.waitForChanges();
 
     expect(await tooltip.isVisible()).toBe(false);
   });

@@ -10,7 +10,7 @@ import { TextField } from "../../../ic-text-field/ic-text-field";
 const DIALOG_DELAY_MS = 100;
 
 const setupDialogMethods = (page: SpecPage) => {
-  page.rootInstance.dialogEl.showModal = jest.fn(function mock(
+  page.rootInstance.dialogEl.show = jest.fn(function mock(
     this: HTMLDialogElement
   ) {
     this.open = true;

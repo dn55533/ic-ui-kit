@@ -34,7 +34,7 @@ import { IcSearchBarSearchModes } from "../ic-search-bar/ic-search-bar.types";
 })
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class Menu {
-  private firstRender: boolean = true;
+  // private firstRender: boolean = true;
   private hasPreviouslyBlurred: boolean = false;
   private hasTimedOut: boolean = false;
   private isLoading: boolean = false;
@@ -98,6 +98,34 @@ export class Menu {
    * If `true`, the menu will be displayed open.
    */
   @Prop({ reflect: true }) open!: boolean;
+
+  @Watch("open")
+  watchOpenHandler(open: boolean[]): void {
+    if (open) {
+      this.popperInstance = createPopper(this.anchorEl, this.host, {
+        placement: "bottom",
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 7],
+            },
+          },
+          {
+            name: "flip",
+            options: {
+              fallbackPlacements: ["top"],
+              rootBoundary: "viewport",
+            },
+          },
+        ],
+      });
+    } else {
+      if (this.popperInstance) {
+        this.popperInstance.destroy();
+      }
+    }
+  }
 
   /**
    * @internal - The parent element if ic-menu is nested inside another component.
@@ -271,55 +299,75 @@ export class Menu {
   }
 
   componentDidRender(): void {
-    if (this.firstRender && this.open) {
-      this.firstRender = false;
-      let adjust = false;
+    // if (this.open) {
+    //   this.popperInstance = createPopper(this.anchorEl, this.host, {
+    //     placement: "bottom",
+    //     modifiers: [
+    //       {
+    //         name: "offset",
+    //         options: {
+    //           offset: [0, 7],
+    //         },
+    //       },
+    //       {
+    //         name: "flip",
+    //         options: {
+    //           fallbackPlacements: ["top"],
+    //           rootBoundary: "viewport",
+    //         },
+    //       },
+    //     ],
+    //   });
+    // }
+    // if (this.firstRender && this.open) {
+    //   this.firstRender = false;
+    //   let adjust = false;
 
-      const dialogEl = this.parentEl.closest("ic-dialog");
+    //   const dialogEl = this.parentEl.closest("ic-dialog");
 
-      const onDialog = dialogEl !== null;
-      if (onDialog) {
-        this.host.classList.add("on-dialog");
-        if (dialogEl.getAttribute("data-overflow") === "false") {
-          const menuTop = this.host.getBoundingClientRect().top;
-          const menuHeight = this.host.getBoundingClientRect().height;
-          const dialogHeight = dialogEl.getBoundingClientRect().bottom;
-          if (menuTop + menuHeight > dialogHeight) {
-            adjust = true;
-          }
-        }
-        if (adjust === false) {
-          this.host.classList.add("on-dialog-fix-translate");
-        }
-      }
+    //   const onDialog = dialogEl !== null;
+    //   if (onDialog) {
+    //     this.host.classList.add("on-dialog");
+    //     if (dialogEl.getAttribute("data-overflow") === "false") {
+    //       const menuTop = this.host.getBoundingClientRect().top;
+    //       const menuHeight = this.host.getBoundingClientRect().height;
+    //       const dialogHeight = dialogEl.getBoundingClientRect().bottom;
+    //       if (menuTop + menuHeight > dialogHeight) {
+    //         adjust = true;
+    //       }
+    //     }
+    //     if (adjust === false) {
+    //       this.host.classList.add("on-dialog-fix-translate");
+    //     }
+    //   }
 
-      if (adjust) {
-        this.popperInstance = createPopper(this.anchorEl, this.host, {
-          placement: "top",
-        });
-      } else {
-        this.popperInstance = createPopper(this.anchorEl, this.host, {
-          placement: "bottom",
-          modifiers: [
-            {
-              name: "offset",
-              options: {
-                offset: [0, 7],
-              },
-            },
-            {
-              name: "flip",
-              options: {
-                fallbackPlacements: ["top"],
-                rootBoundary: "viewport",
-              },
-            },
-          ],
-        });
-      }
-    } else if (this.open) {
-      this.popperInstance.update();
-    }
+    //   if (adjust) {
+    //     this.popperInstance = createPopper(this.anchorEl, this.host, {
+    //       placement: "top",
+    //     });
+    //   } else {
+    //     this.popperInstance = createPopper(this.anchorEl, this.host, {
+    //       placement: "bottom",
+    //       modifiers: [
+    //         {
+    //           name: "offset",
+    //           options: {
+    //             offset: [0, 7],
+    //           },
+    //         },
+    //         {
+    //           name: "flip",
+    //           options: {
+    //             fallbackPlacements: ["top"],
+    //             rootBoundary: "viewport",
+    //           },
+    //         },
+    //       ],
+    //     });
+    //   }
+    // } else if (this.open) {
+    //   this.popperInstance.update();
+    // }
 
     if (this.open && !!this.options.length) {
       this.setMenuScrollbar();

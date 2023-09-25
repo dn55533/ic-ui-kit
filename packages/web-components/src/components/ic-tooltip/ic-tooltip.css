@@ -116,13 +116,6 @@
   top: calc(-1 * var(--ic-space-1px));
 }
 
-:host(.on-dialog) .ic-tooltip-container {
-  transform: translate(
-    var(--tooltip-translate-x),
-    var(--tooltip-translate-y)
-  ) !important;
-}
-
 @media (forced-colors: active) {
   :host(.ic-tooltip) .ic-tooltip-container,
   :host(.ic-tooltip) .ic-tooltip-arrow::before {
