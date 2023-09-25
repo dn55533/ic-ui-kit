@@ -2954,7 +2954,9 @@ exports[`ic-data-table should render with row headers 1`] = `
           <tbody>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                1
+                <div class="cell-container">
+                  1
+                </div>
               </th>
               <td class="data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -2980,7 +2982,9 @@ exports[`ic-data-table should render with row headers 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                2
+                <div class="cell-container">
+                  2
+                </div>
               </th>
               <td class="data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3006,7 +3010,9 @@ exports[`ic-data-table should render with row headers 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                3
+                <div class="cell-container">
+                  3
+                </div>
               </th>
               <td class="data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3032,7 +3038,9 @@ exports[`ic-data-table should render with row headers 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                4
+                <div class="cell-container">
+                  4
+                </div>
               </th>
               <td class="data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3058,7 +3066,9 @@ exports[`ic-data-table should render with row headers 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                5
+                <div class="cell-container">
+                  5
+                </div>
               </th>
               <td class="data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3084,7 +3094,9 @@ exports[`ic-data-table should render with row headers 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                6
+                <div class="cell-container">
+                  6
+                </div>
               </th>
               <td class="data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3161,7 +3173,9 @@ exports[`ic-data-table should render with row overrides 1`] = `
           <tbody>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                1
+                <div class="cell-container">
+                  1
+                </div>
               </th>
               <td class="cell-alignment-middle data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3187,7 +3201,9 @@ exports[`ic-data-table should render with row overrides 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                2
+                <div class="cell-container">
+                  2
+                </div>
               </th>
               <td class="cell-alignment-top data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3213,7 +3229,9 @@ exports[`ic-data-table should render with row overrides 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                3
+                <div class="cell-container">
+                  3
+                </div>
               </th>
               <td class="cell-alignment-bottom data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3239,7 +3257,9 @@ exports[`ic-data-table should render with row overrides 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                4
+                <div class="cell-container">
+                  4
+                </div>
               </th>
               <td class="cell-alignment-middle data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3265,7 +3285,9 @@ exports[`ic-data-table should render with row overrides 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                5
+                <div class="cell-container">
+                  5
+                </div>
               </th>
               <td class="cell-alignment-top data-type-string table-cell">
                 <div class="cell-container data-type-string">
@@ -3291,7 +3313,9 @@ exports[`ic-data-table should render with row overrides 1`] = `
             </tr>
             <tr class="table-row">
               <th class="row-header" scope="row">
-                6
+                <div class="cell-container">
+                  6
+                </div>
               </th>
               <td class="cell-alignment-bottom data-type-string table-cell">
                 <div class="cell-container data-type-string">
