@@ -1627,3 +1627,31 @@ export const defaultArgs = {
     }
   </Story>
 </Canvas>
+
+### Popper Test
+
+<Canvas>
+  <Story name="PopperJs" parameters={{ loki: { skip: true } }}>
+    {(args) =>
+      html`<div
+          style="height: 100vh; margin-bottom: 20px;display: flex;align-items: flex-end;"
+        >
+          <ic-select
+            id="select-1"
+            label="What is your favourite coffee?"
+          ></ic-select>
+        </div>
+        <script>
+          var select = document.querySelector("#select-1");
+          select.options = [
+            { label: "Cappuccino", value: "Cap" },
+            { label: "Latte", value: "Lat" },
+            { label: "Americano", value: "Ame" },
+          ];
+          select.addEventListener("icChange", function (event) {
+            console.log(event.detail.value);
+          });
+        </script>`
+    }
+  </Story>
+</Canvas>
