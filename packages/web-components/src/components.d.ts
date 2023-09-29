@@ -1252,7 +1252,7 @@ export namespace Components {
         /**
           * Sets the styling for the items in the pagination bar.
          */
-        "appearance"?: IcThemeForeground;
+        "appearance"?: IcThemeForeground1;
         /**
           * The label which will be used in place of 'items' if paginationType is data. Should be capitalised.
          */
@@ -2029,10 +2029,6 @@ export namespace Components {
           * The description that is displayed below the `header` and `metadata`. Can be overridden with the `description` slot.
          */
         "description"?: string;
-        /**
-          * If `true`, will apply a background colour and a bottom border to the title bar.
-         */
-        "fullWidth"?: boolean;
         /**
           * The header of the title bar. Can be overridden with the `header` slot. If used with an ic-data-table it will default to the table's `caption` unless overridden.
          */
@@ -3942,7 +3938,7 @@ declare namespace LocalJSX {
         /**
           * Sets the styling for the items in the pagination bar.
          */
-        "appearance"?: IcThemeForeground;
+        "appearance"?: IcThemeForeground1;
         /**
           * The label which will be used in place of 'items' if paginationType is data. Should be capitalised.
          */
@@ -4840,10 +4836,6 @@ declare namespace LocalJSX {
           * The description that is displayed below the `header` and `metadata`. Can be overridden with the `description` slot.
          */
         "description"?: string;
-        /**
-          * If `true`, will apply a background colour and a bottom border to the title bar.
-         */
-        "fullWidth"?: boolean;
         /**
           * The header of the title bar. Can be overridden with the `header` slot. If used with an ic-data-table it will default to the table's `caption` unless overridden.
          */

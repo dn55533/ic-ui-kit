@@ -792,6 +792,7 @@ export const CustomTitleBar = (): HTMLIcDataTableElement => {
 
   const primaryButton = document.createElement("ic-button");
   primaryButton.setAttribute("slot", "primary-action");
+  primaryButton.setAttribute("size", "small");
   primaryButton.innerHTML = "Primary";
 
   const customButtons = [1, 2, 3].map((x) => {
