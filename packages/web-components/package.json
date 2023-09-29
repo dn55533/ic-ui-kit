@@ -37,6 +37,7 @@
     "audit": "echo 'Audit for: @ukic/web-components' && audit-ci -m --config ../../audit-ci.json"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.5.3",
     "@popperjs/core": "^2.11.2",
     "@stencil/core": "^4.1.0",
     "@ukic/fonts": "^2.3.0"

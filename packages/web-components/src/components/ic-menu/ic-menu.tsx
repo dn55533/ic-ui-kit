@@ -11,7 +11,8 @@ import {
   Watch,
   Fragment,
 } from "@stencil/core";
-import { createPopper, Instance as PopperInstance } from "@popperjs/core";
+// import { createPopper, Instance as PopperInstance } from "@popperjs/core";
+import { computePosition, flip } from "@floating-ui/dom";
 
 import {
   IcActivationTypes,
@@ -41,7 +42,7 @@ export class Menu {
   private isSearchBar: boolean = false;
   private isSearchableSelect: boolean = false;
   private menu: HTMLUListElement;
-  private popperInstance: PopperInstance;
+  // private popperInstance: PopperInstance;
   // Prevents menu re-opening immediately after it is closed on blur when clicking input.
   private preventClickOpen: boolean = false;
   private ungroupedOptions: IcMenuOption[] = [];
@@ -100,31 +101,38 @@ export class Menu {
   @Prop({ reflect: true }) open!: boolean;
 
   @Watch("open")
-  watchOpenHandler(open: boolean[]): void {
-    if (open) {
-      this.popperInstance = createPopper(this.anchorEl, this.host, {
-        placement: "bottom",
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset: [0, 7],
-            },
-          },
-          {
-            name: "flip",
-            options: {
-              fallbackPlacements: ["top"],
-              rootBoundary: "viewport",
-            },
-          },
-        ],
-      });
-    } else {
-      if (this.popperInstance) {
-        this.popperInstance.destroy();
-      }
-    }
+  watchOpenHandler(): void {
+    computePosition(this.anchorEl, this.host, {
+      placement: "bottom",
+      middleware: [flip()],
+    }).then((props) => {
+      this.host.style.setProperty("--menu-placement-y", `${props.y}px`);
+      this.host.style.setProperty("--menu-placement-x", `${props.x}px`);
+    });
+    // if (open) {
+    //   this.popperInstance = createPopper(this.anchorEl, this.host, {
+    //     placement: "bottom",
+    //     modifiers: [
+    //       {
+    //         name: "offset",
+    //         options: {
+    //           offset: [0, 7],
+    //         },
+    //       },
+    //       {
+    //         name: "flip",
+    //         options: {
+    //           fallbackPlacements: ["top"],
+    //           rootBoundary: "viewport",
+    //         },
+    //       },
+    //     ],
+    //   });
+    // } else {
+    //   if (this.popperInstance) {
+    //     this.popperInstance.destroy();
+    //   }
+    // }
   }
 
   /**
@@ -220,9 +228,9 @@ export class Menu {
   }
 
   disconnectedCallback(): void {
-    if (this.popperInstance !== undefined) {
-      this.popperInstance.destroy();
-    }
+    // if (this.popperInstance !== undefined) {
+    //   this.popperInstance.destroy();
+    // }
     this.parentEl.removeEventListener("icClear", this.handleClearListener);
     this.parentEl.removeEventListener(
       "icSubmitSearch",

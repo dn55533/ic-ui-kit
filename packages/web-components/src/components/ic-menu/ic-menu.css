@@ -11,6 +11,16 @@
 }
 
 :host {
+  background-color: var(--ic-architectural-white);
+  position: absolute;
+  width: var(--input-width, 20rem);
+  border-radius: var(--ic-border-radius);
+  top: var(--menu-placement-y, 0);
+  left: var(--menu-placement-x, 0);
+  max-height: 0;
+}
+
+/* :host {
   border-radius: var(--ic-border-radius);
   max-height: 0;
   width: var(--input-width, 20rem);
@@ -20,7 +30,7 @@
   z-index: var(--ic-z-index-menu);
   box-sizing: border-box;
   box-shadow: var(--ic-elevation-overlay);
-}
+} */
 
 :host(:not(.no-focus):focus-within) {
   box-shadow: var(--ic-border-focus);
