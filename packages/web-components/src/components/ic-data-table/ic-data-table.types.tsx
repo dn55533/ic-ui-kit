@@ -29,3 +29,7 @@ export type IcDataTableColumnObject = {
     hideOnHeader?: boolean;
   };
 };
+
+export interface IcDensityUpdateEventDetail {
+  value: IcDataTableDensityOptions;
+}
