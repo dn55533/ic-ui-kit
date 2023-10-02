@@ -778,7 +778,7 @@ exports[`ic-data-table should pass the caption down to any slotted ic-title-bar 
     <mock:shadow-root>
       <div class="title-bar-wrapper">
         <div class="header-container">
-          <slot name="header">
+          <slot name="heading">
             <ic-typography variant="h3">
               Table
             </ic-typography>

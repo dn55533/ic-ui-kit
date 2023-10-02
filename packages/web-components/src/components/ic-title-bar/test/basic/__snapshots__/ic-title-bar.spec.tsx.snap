@@ -5,7 +5,7 @@ exports[`ic-title-bar should not render the actions area if hideDensitySelect is
   <mock:shadow-root>
     <div class="title-bar-wrapper">
       <div class="header-container">
-        <slot name="header">
+        <slot name="heading">
           <ic-typography variant="h3">
             header
           </ic-typography>
@@ -21,7 +21,7 @@ exports[`ic-title-bar should render 1`] = `
   <mock:shadow-root>
     <div class="title-bar-wrapper">
       <div class="header-container">
-        <slot name="header">
+        <slot name="heading">
           <ic-typography variant="h3">
             header
           </ic-typography>
@@ -43,7 +43,7 @@ exports[`ic-title-bar should render the description area if the description is s
   <mock:shadow-root>
     <div class="title-bar-wrapper">
       <div class="header-container">
-        <slot name="header">
+        <slot name="heading">
           <ic-typography variant="h3">
             header
           </ic-typography>
@@ -65,7 +65,7 @@ exports[`ic-title-bar should render with description and metadata 1`] = `
   <mock:shadow-root>
     <div class="title-bar-wrapper">
       <div class="header-container">
-        <slot name="header">
+        <slot name="heading">
           <ic-typography variant="h3">
             header
           </ic-typography>
@@ -94,7 +94,7 @@ exports[`ic-title-bar should render with slotted actions 1`] = `
   <mock:shadow-root>
     <div class="title-bar-wrapper">
       <div class="header-container">
-        <slot name="header">
+        <slot name="heading">
           <ic-typography variant="h3">
             header
           </ic-typography>
@@ -127,7 +127,7 @@ exports[`ic-title-bar should render with slotted header and description 1`] = `
   <mock:shadow-root>
     <div class="title-bar-wrapper">
       <div class="header-container">
-        <slot name="header">
+        <slot name="heading">
           <ic-typography variant="h3">
             Title Bar
           </ic-typography>
@@ -141,7 +141,7 @@ exports[`ic-title-bar should render with slotted header and description 1`] = `
       </div>
     </div>
   </mock:shadow-root>
-  <ic-typography slot="header">
+  <ic-typography slot="heading">
     slotted header
   </ic-typography>
   <ic-typography slot="description">

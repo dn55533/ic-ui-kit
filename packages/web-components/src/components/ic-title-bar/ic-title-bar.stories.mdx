@@ -10,7 +10,7 @@ import readme from "./readme.md";
 
 <Canvas>
   <Story name="Basic">{html`<ic-title-bar
-    header="Title Bar"
+    heading="Title Bar"
   ></ic-title-bar>`}</Story>
 </Canvas>
 
@@ -19,7 +19,7 @@ import readme from "./readme.md";
 <Canvas>
   <Story name="With metadata and description">
     {html`<ic-title-bar
-      header="Title Bar"
+      heading="Title Bar"
       metadata="128 items | 32gb | Updated: 01/02/03"
       description="Data table description that describes the purpose of the table."
     ></ic-title-bar>`}
@@ -32,7 +32,7 @@ import readme from "./readme.md";
   <Story name="Hide density selector">
     {html`<ic-title-bar
       hide-density-select="true"
-      header="Title Bar"
+      heading="Title Bar"
       metadata="128 items | 32gb | Updated: 01/02/03"
       description="Data table description that describes the purpose of the table."
     ></ic-title-bar>`}
@@ -44,7 +44,7 @@ import readme from "./readme.md";
 <Canvas>
   <Story name="Custom actions">
     {html`<ic-title-bar
-      header="Title Bar"
+      heading="Title Bar"
       metadata="128 items | 32gb | Updated: 01/02/03"
       description="Data table description that describes the purpose of the table."
     >
@@ -77,7 +77,7 @@ import readme from "./readme.md";
           the text.
         </p>
       </ic-typography>
-      <ic-typography slot="header" variant="h3">
+      <ic-typography slot="heading" variant="h3">
         <ic-link href="/" inline="">Title Bar</ic-link>
       </ic-typography>
     </ic-title-bar>`}

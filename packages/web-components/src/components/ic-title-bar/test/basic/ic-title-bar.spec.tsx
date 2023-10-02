@@ -10,7 +10,7 @@ describe("ic-title-bar", () => {
   it("should render", async () => {
     const page = await newSpecPage({
       components: [TitleBar],
-      template: () => <ic-title-bar header="header"></ic-title-bar>,
+      template: () => <ic-title-bar heading="header"></ic-title-bar>,
     });
 
     expect(page.root).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe("ic-title-bar", () => {
       components: [TitleBar],
       template: () => (
         <ic-title-bar
-          header="header"
+          heading="header"
           metadata="metadata"
           description="desc"
         ></ic-title-bar>
@@ -35,7 +35,7 @@ describe("ic-title-bar", () => {
     const page = await newSpecPage({
       components: [TitleBar],
       template: () => (
-        <ic-title-bar header="header">
+        <ic-title-bar heading="header">
           <ic-button slot="primary-action">1</ic-button>
           <ic-button slot="custom-actions">2</ic-button>
           <ic-button slot="custom-actions">3</ic-button>
@@ -51,7 +51,7 @@ describe("ic-title-bar", () => {
       components: [TitleBar],
       template: () => (
         <ic-title-bar>
-          <ic-typography slot="header">slotted header</ic-typography>
+          <ic-typography slot="heading">slotted header</ic-typography>
           <ic-typography slot="description">slotted desc</ic-typography>
         </ic-title-bar>
       ),
@@ -64,7 +64,7 @@ describe("ic-title-bar", () => {
     const page = await newSpecPage({
       components: [TitleBar],
       template: () => (
-        <ic-title-bar header="header" hideDensitySelect={true}></ic-title-bar>
+        <ic-title-bar heading="header" hideDensitySelect={true}></ic-title-bar>
       ),
     });
 
@@ -75,7 +75,7 @@ describe("ic-title-bar", () => {
     const page = await newSpecPage({
       components: [TitleBar],
       template: () => (
-        <ic-title-bar header="header" hideDensitySelect={true}>
+        <ic-title-bar heading="header" hideDensitySelect={true}>
           <ic-typography slot="description">slotted desc</ic-typography>
         </ic-title-bar>
       ),
@@ -87,7 +87,7 @@ describe("ic-title-bar", () => {
   it("should emit the icTableDensityUpdate when the density select is updated", async () => {
     const page = await newSpecPage({
       components: [TitleBar],
-      template: () => <ic-title-bar header="header"></ic-title-bar>,
+      template: () => <ic-title-bar heading="header"></ic-title-bar>,
     });
 
     const eventSpy = jest.fn();

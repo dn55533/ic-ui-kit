@@ -2026,19 +2026,19 @@ export namespace Components {
     }
     interface IcTitleBar {
         /**
-          * The description that is displayed below the `header` and `metadata`. Can be overridden with the `description` slot.
+          * The description that is displayed below the `heading` and `metadata`. Can be overridden with the `description` slot.
          */
         "description"?: string;
         /**
-          * The header of the title bar. Can be overridden with the `header` slot. If used with an ic-data-table it will default to the table's `caption` unless overridden.
+          * The heading of the title bar. Can be overridden with the `heading` slot. If used with an ic-data-table it will default to the table's `caption` unless overridden.
          */
-        "header"?: string;
+        "heading"?: string;
         /**
           * When `true`, the density select will not be rendered.
          */
         "hideDensitySelect"?: boolean;
         /**
-          * The metadata displayed next to the `header`.
+          * The metadata displayed next to the `heading`.
          */
         "metadata"?: string;
     }
@@ -4833,19 +4833,19 @@ declare namespace LocalJSX {
     }
     interface IcTitleBar {
         /**
-          * The description that is displayed below the `header` and `metadata`. Can be overridden with the `description` slot.
+          * The description that is displayed below the `heading` and `metadata`. Can be overridden with the `description` slot.
          */
         "description"?: string;
         /**
-          * The header of the title bar. Can be overridden with the `header` slot. If used with an ic-data-table it will default to the table's `caption` unless overridden.
+          * The heading of the title bar. Can be overridden with the `heading` slot. If used with an ic-data-table it will default to the table's `caption` unless overridden.
          */
-        "header"?: string;
+        "heading"?: string;
         /**
           * When `true`, the density select will not be rendered.
          */
         "hideDensitySelect"?: boolean;
         /**
-          * The metadata displayed next to the `header`.
+          * The metadata displayed next to the `heading`.
          */
         "metadata"?: string;
         /**

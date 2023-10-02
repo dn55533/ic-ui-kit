@@ -19,7 +19,7 @@ import { mdiImage } from '@mdi/js';
 
 <Canvas>
   <Story name="Basic">
-    <IcTitleBar header="Title Bar" />
+    <IcTitleBar heading="Title Bar" />
   </Story>
 </Canvas>
 
@@ -28,7 +28,7 @@ import { mdiImage } from '@mdi/js';
 <Canvas>
   <Story name="With metadata and description">
     <IcTitleBar
-      header="Title Bar"
+      heading="Title Bar"
       metadata="128 items | 32gb | Updated: 01/02/03"
       description="Data table description that describes the purpose of the table."
     />
@@ -41,7 +41,7 @@ import { mdiImage } from '@mdi/js';
   <Story name="Hide density selector">
     <IcTitleBar
       hideDensitySelect
-      header="Title Bar"
+      heading="Title Bar"
       metadata="128 items | 32gb | Updated: 01/02/03"
       description="Data table description that describes the purpose of the table."
     />
@@ -52,7 +52,7 @@ import { mdiImage } from '@mdi/js';
 
 <Canvas>
   <Story name="Custom actions">
-    <IcTitleBar header="Title Bar" metadata="128 items | 32gb | Updated: 01/02/03" description="Data table description that describes the purpose of the table.">
+    <IcTitleBar heading="Title Bar" metadata="128 items | 32gb | Updated: 01/02/03" description="Data table description that describes the purpose of the table.">
       <IcButton slot="primary-action" size="small">Primary</IcButton>
       <IcButton slot="custom-actions" variant="icon" aria-label="Icon Button">
         <SlottedSVG path={mdiImage} viewBox="0 0 24 24"/>
@@ -66,7 +66,7 @@ import { mdiImage } from '@mdi/js';
 <Canvas>
   <Story name="Slotted header and description">
     <IcTitleBar hideDensitySelect>
-      <IcTypography slot="header" variant="h3">
+      <IcTypography slot="heading" variant="h3">
         <IcLink href="/" inline>Title Bar</IcLink>
       </IcTypography>
       <IcTypography slot="description" variant="body">
