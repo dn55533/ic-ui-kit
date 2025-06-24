@@ -119,8 +119,7 @@ export class LoadingIndicator {
         ".ic-loading-circular-svg circle:nth-child(2)"
       );
       this.updateCircularProgressMeter();
-    }
-    else if(this.type === "linear") {
+    } else if (this.type === "linear") {
       this.setLinearDeterminateWidth();
     }
   }
@@ -234,12 +233,8 @@ export class LoadingIndicator {
         "--linear-width",
         `${proportion * 100}%`
       );
-    }
-    else {
-      this.innerElement.style.setProperty(
-        "--linear-width",
-        "0"
-      );
+    } else {
+      this.innerElement.style.setProperty("--linear-width", "0");
     }
   };
 
